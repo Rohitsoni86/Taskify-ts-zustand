@@ -54,11 +54,14 @@ const taskStore = (set: (fn: (state: TaskStore) => void) => void) => ({
 
 // Create a store using Zustand, with devtools and persistence middleware
 const useTaskStore = create<TaskStore>()(
-	devtools(
-		persist(taskStore, {
-			name: "tasks", // Name of the persisted storage key
-		})
-	)
+	// devtools(
+	// 	persist(taskStore, {
+	// 		name: "tasks", // Name of the persisted storage key
+	// 	})
+	// )
+	// OR
+
+	devtools(taskStore) // Only using devtools, without persist
 );
 
 export default useTaskStore;
